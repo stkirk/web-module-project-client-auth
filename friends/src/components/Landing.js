@@ -1,13 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import Login from "./Login";
 
-const Landing = () => {
+const Landing = (props) => {
   const history = useHistory();
   return (
     <div className="landing">
       <h1>LAnding Page</h1>
-      <Login />
+      {props.loading ? <h1>Logging in...</h1> : <Login />}
       <button
         onClick={() => {
           history.push("/friends");
@@ -15,8 +16,15 @@ const Landing = () => {
       >
         Friends Protected Route
       </button>
+      <button onClick={() => localStorage.removeItem("token")}>Logout</button>
     </div>
   );
 };
 
-export default Landing;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.loading,
+  };
+};
+
+export default connect(mapStateToProps, {})(Landing);
