@@ -1,14 +1,21 @@
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Landing from "./components/Landing";
+import Nav from "./components/Nav";
+import Friends from "./components/Friends";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Friends</h1>
-      <Landing />
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route path="/friends" component={Friends} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
