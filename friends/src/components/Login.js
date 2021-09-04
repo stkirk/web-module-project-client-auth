@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Login = (props) => {
   const initialFormValues = {
@@ -18,16 +19,24 @@ const Login = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const login = (e) => {
     e.preventDefault();
-    console.log(formValues);
-    setFormValues(initialFormValues);
+    axios
+      .post("http://localhost:5000/api/login", formValues.credentials)
+      .then((res) => {
+        console.log("Login Response: ", res);
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch((err) => {
+        console.log("Login Err: ", err);
+        //later flip a state flag true to display error message
+      });
   };
 
   return (
     <div className="login">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={login}>
         <div className="input-div">
           <label htmlFor="username" />
           <input
