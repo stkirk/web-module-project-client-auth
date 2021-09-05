@@ -1,4 +1,7 @@
 import {
+  CREATE_FRIEND_FAILURE,
+  CREATE_FRIEND_START,
+  CREATE_FRIEND_SUCCESS,
   FETCHING_FRIENDS_FAILURE,
   FETCHING_FRIENDS_START,
   FETCHING_FRIENDS_SUCCESS,
@@ -9,6 +12,8 @@ const initialState = {
   loadingLogin: false,
   loadingFriends: false,
   friendsError: "",
+  loadingCreateFriend: false,
+  createFriendError: "",
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -26,6 +31,20 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         friendsError: action.payload,
         loadingFriends: false,
+      };
+    case CREATE_FRIEND_START:
+      return { ...state, loadingCreateFriend: true };
+    case CREATE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: action.payload,
+        loadingCreateFriend: false,
+      };
+    case CREATE_FRIEND_FAILURE:
+      return {
+        ...state,
+        createFriendError: action.payload,
+        loadingCreateFriend: false,
       };
 
     default:

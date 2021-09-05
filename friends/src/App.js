@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Friends from "./components/Friends";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import AddFriendForm from "./components/AddFriendForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route path="/login" component={Login} />
           <PrivateRoute exact path="/friends" component={Friends} />
+          <PrivateRoute exact path="/addfriend" component={AddFriendForm} />
         </Switch>
       </div>
     </Router>
