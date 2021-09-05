@@ -1,6 +1,7 @@
 const initialState = {
   friends: [],
-  loading: false,
+  loadingLogin: false,
+  loadingFriends: false,
   error: "",
 };
 

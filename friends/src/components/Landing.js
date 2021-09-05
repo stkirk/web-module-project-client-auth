@@ -7,8 +7,8 @@ const Landing = (props) => {
   const history = useHistory();
   return (
     <div className="landing">
-      <h1>LAnding Page</h1>
-      {props.loading ? <h1>Logging in...</h1> : <Login />}
+      <h1>LANDING PAGE</h1>
+      {props.loadingLogin ? <h1>Logging in...</h1> : <Login />}
       <button
         onClick={() => {
           history.push("/friends");
@@ -23,7 +23,7 @@ const Landing = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.loading,
+    loadingLogin: state.loadingLogin,
   };
 };
 
