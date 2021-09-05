@@ -7,3 +7,16 @@ body {
   width: 85%;
   margin: 0 auto;
 }
+
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.friend {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 300px;
+  margin: 2% 0;
+}
